@@ -28,8 +28,31 @@ public class Database {
         return null;
     }
 
+    public void deleteById(long id) {
+        Product productToRemove = null;
+        for (Product product : db) {
+            if (product.getId() == id) {
+                productToRemove = product;
+                break;
+            }
+        }
+
+        if (productToRemove != null) {
+            db.remove(productToRemove);
+        }
+    }
+
+    public void updateProductNameById(long id, String newName) {
+        for (Product product : db) {
+            if (product.getId() == id) {
+                product.setName(newName);
+                break;
+            }
+        }
+    }
     public void clear() {
         db.clear();
     }
+
 
 }

@@ -56,4 +56,27 @@ class DatabaseTest {
 
         assertEquals(db.size(), 0);
     }
+    @Test
+    @DisplayName("Test for delete product")
+    public void delete(){
+        db.insert(new Product(1, "Coca Cola 3lt"));
+        db.insert(new Product(2, "Gansito"));
+        db.insert(new Product(3, "Mordisko"));
+        db.insert(new Product(4, "Sabritas 30g"));
+        db.deleteById(3);
+        assertEquals(db.size(), 3);
+    }
+@Test
+    @DisplayName("Test to update product")
+    public void updateProduct() {
+    db.insert(new Product(1, "Coca Cola 3lt"));
+    db.insert(new Product(2, "Gansito"));
+    db.insert(new Product(3, "Mordisko"));
+    db.insert(new Product(4, "Sabritas 30g"));
+    db.updateProductNameById(2, "Submarino");
+    Product p = db.getById(2);
+    assertEquals(p.getId(), 2);
+    assertEquals(p.getName(), "Submarino");
+
+}
 }
